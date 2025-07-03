@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  .container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Panel izquierdo */
+  .left-panel {
+    width: 50%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .login-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .logo {
+    width: 70px;
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+    color: #2e572a;
+    margin-bottom: 5px;
+  }
+  
+  .subtitle {
+    color: #888;
+    font-size: 0.95em;
+    margin-bottom: 25px;
+  }
+  
+  .form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f0f7ff;
+  }
+  
+  .checkbox {
+    text-align: left;
+    margin: 15px 0;
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3f6536;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #2d4a28;
+  }
+  
+  .registro {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #333;
+  }
+  
+  .registro a {
+    font-weight: bold;
+    color: #2e572a;
+    text-decoration: none;
+  }
+  
+  .alert {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 0.9em;
+  }
+  
+  .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  /* Panel derecho */
+  .right-panel {
+    width: 50%;
+    background-color: #5a7756;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+    text-align: center;
+  }
+  
+  .right-panel .content img {
+    max-width: 80%;
+    margin-top: 30px;
+    border-radius: 12px;
+  }
+  
+  /* Responsive */
+  @media screen and (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .left-panel,
+    .right-panel {
+      width: 100%;
+      height: auto;
+    }
+  
+    .right-panel {
+      padding: 30px;
+    }
+  }
+  
