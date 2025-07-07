@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zero Waste | Iniciar Sesión</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-pkG7hZG6l0v8..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo-nav">
+      <img src="{{ url_for('static', filename='img/LogoPrincipal.jpeg') }}" alt="Logo Zero Waste">
+      <span>Zero Waste</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#">Inicio</a>
+      <a href="#">Fundación</a>
+      <a href="#">Nosotros</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Botones superiores -->
+  <div class="top-buttons">
+    <a href="#"><i class="fas fa-home"></i></a>
+    <a href="#"><i class="fas fa-info-circle"></i></a>
+    <a href="#"><i class="fas fa-phone-alt"></i></a>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="main-container">
+    <div class="content-left">
+      <h1 class="hero-title">ZERO WASTE</h1>
+      <p class="hero-subtitle">GO GREEN!<br>Únete a nuestra comunidad ecológica y transforma tus hábitos de consumo desde la UPQ.</p>
+
+      <form method="POST" class="login-form">
+        <div class="form-group input-icon">
+          <i class="fas fa-envelope"></i>
+          <input type="text" name="correo" required placeholder="Correo electrónico" value="{{ correo or '' }}">
+        </div>
+        {% if errores and errores.get('correo') %}
+          <p class="error">{{ errores.get('correo') }}</p>
+        {% endif %}
+
+        <div class="form-group input-icon">
+          <i class="fas fa-lock"></i>
+          <input type="password" name="contraseña" required placeholder="Contraseña">
+        </div>
+        {% if errores and errores.get('contraseña') %}
+          <p class="error">{{ errores.get('contraseña') }}</p>
+        {% endif %}
+
+        {% if errores and errores.get('credenciales') %}
+          <p class="error-center">{{ errores.get('credenciales') }}</p>
+        {% endif %}
+
+        <button type="submit">Iniciar Sesión</button>
+        <p class="registro">¿No tienes cuenta? <a href="{{ url_for('registro') }}">Crear cuenta</a></p>
+      </form>
+    </div>
+
+    <div class="content-right">
+      <img src="{{ url_for('static', filename='img/ecofondo.webp') }}" alt="Ilustración ecológica" class="eco-illustration">
+    </div>
+  </div>
+</body>
+</html>
+

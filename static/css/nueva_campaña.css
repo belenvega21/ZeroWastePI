@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to right, #d0f0e0, #e8f5e9);
+    margin: 0;
+    padding: 0;
+}
+
+/* CONTENEDOR CENTRAL */
+.form-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* TARJETA DEL FORMULARIO */
+.form-container {
+    max-width: 440px;
+    width: 100%;
+    background: #ffffff;
+    padding: 30px 28px;
+    border-radius: 20px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.6s ease-in-out;
+    text-align: center;
+}
+
+/* LOGO PEQUEÑO */
+.logo-campaña {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* TÍTULO */
+.form-container h1 {
+    font-size: 1.7em;
+    color: #2e7d32;
+    margin-bottom: 6px;
+}
+
+.subtexto {
+    color: #4e944f;
+    font-size: 0.95em;
+    margin-bottom: 18px;
+}
+
+/* ETIQUETAS */
+label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    margin: 12px 0 6px;
+    color: #2e7d32;
+    font-size: 0.95em;
+}
+
+/* CAMPOS DE FORMULARIO */
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid #cce8d1;
+    border-radius: 10px;
+    background: #f6fff9;
+    font-size: 0.95em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* FOCUS EN CAMPOS */
+input:focus,
+textarea:focus {
+    border-color: #43a047;
+    outline: none;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+}
+
+/* BOTÓN */
+button {
+    margin-top: 20px;
+    width: 100%;
+    background: linear-gradient(to right, #66bb6a, #43a047);
+    color: white;
+    padding: 11px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(to right, #388e3c, #2e7d32);
+    transform: scale(1.03);
+}
+
+/* ENLACE VOLVER */
+a {
+    display: inline-block;
+    margin-top: 22px;
+    color: #2e7d32;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #1b5e20;
+}
+
+/* MENSAJES FLASH */
+.alert {
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+    text-align: left;
+}
+
+.alert-success {
+    background-color: #e6f4ea;
+    color: #2e7d32;
+    border-left: 4px solid #43a047;
+}
+
+.alert-warning {
+    background-color: #fff8e1;
+    color: #f57f17;
+    border-left: 4px solid #fbc02d;
+}
+
+.alert-danger {
+    background-color: #fdecea;
+    color: #c62828;
+    border-left: 4px solid #d32f2f;
+}
+
+/* ERRORES DE VALIDACIÓN */
+.error {
+    font-size: 0.85em;
+    color: #c62828;
+    margin: 6px 0 0;
+    text-align: left;
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 600px) {
+    .form-container {
+        padding: 26px 20px;
+    }
+
+    .form-container h1 {
+        font-size: 1.5em;
+    }
+
+    button {
+        font-size: 0.95em;
+    }
+}

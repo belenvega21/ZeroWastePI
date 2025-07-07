@@ -22,15 +22,33 @@
             {% endwith %}
 
             <form method="POST">
-                <input type="text" name="nombre" placeholder="Nombre" required>
-                <input type="text" name="apellido" placeholder="Apellido" required>
-                <input type="email" name="correo" placeholder="Correo electrónico" required>
-                <input type="password" name="contraseña" placeholder="Contraseña" required>
+                <input type="text" name="nombre" placeholder="Nombre" value="{{ nombre or '' }}">
+                {% if errores and errores.get('nombre') %}
+                    <p style="color:green; text-align:left;">{{ errores.get('nombre') }}</p>
+                {% endif %}
+            
+                <input type="text" name="apellido" placeholder="Apellido" value="{{ apellido or '' }}">
+                {% if errores and errores.get('apellido') %}
+                    <p style="color:green; text-align:left;">{{ errores.get('apellido') }}</p>
+                {% endif %}
+            
+                <input type="email" name="correo" placeholder="Correo electrónico" value="{{ correo or '' }}">
+                {% if errores and errores.get('correo') %}
+                    <p style="color:green; text-align:left;">{{ errores.get('correo') }}</p>
+                {% endif %}
+            
+                <input type="password" name="contraseña" placeholder="Contraseña">
+                {% if errores and errores.get('contraseña') %}
+                    <p style="color:green; text-align:left;">{{ errores.get('contraseña') }}</p>
+                {% endif %}
+            
                 <button type="submit">Registrarme</button>
             </form>
+            
 
             <p>¿Ya tienes una cuenta? <a href="{{ url_for('login') }}">Iniciar sesión</a></p>
         </div>
     </div>
 </body>
 </html>
+

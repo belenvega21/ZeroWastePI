@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscripciones a Campañas | Zero Waste</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ver_inscripciones.css') }}">
+</head>
+<body>
+    <h1>Inscripciones a Campañas</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Campaña</th>
+                <th>Fecha de Inscripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nombre, apellido, correo, campaña, fecha in inscripciones %}
+            <tr>
+                <td>{{ nombre }} {{ apellido }}</td>
+                <td>{{ correo }}</td>
+                <td>{{ campaña }}</td>
+                <td>{{ fecha }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="{{ url_for('dashboard') }}">← Volver al Dashboard</a>
+</body>
+</html>

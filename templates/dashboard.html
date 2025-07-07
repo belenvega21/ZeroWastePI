@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zero Waste | Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <img src="{{ url_for('static', filename='img/LogoPrincipal.jpeg') }}" alt="Logo" class="logo">
+      <span class="titulo">Zero Waste</span>
+    </div>
+    <div class="navbar-center">
+      <input type="text" placeholder="Buscar campañas, grupos..." class="search-bar">
+    </div>
+    <div class="navbar-right">
+      <a href="#"><i class="fas fa-home"></i></a>
+      <a href="#"><i class="fas fa-users"></i></a>
+      <a href="#"><i class="fas fa-bell"></i></a>
+      <a href="#"><i class="fas fa-user-circle"></i></a>
+      <a href="{{ url_for('logout') }}" class="logout-btn">Cerrar sesión</a>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main-content">
+    <!-- PANEL IZQUIERDO -->
+    <aside class="left-panel">
+      <h3>🌿 Blogs recientes</h3>
+      <ul>
+        <li><strong>♻️ Reciclar a favor del planeta</strong><br><span>Hace una semana</span></li>
+        <li><strong>🌎 El mundo no se recicla solo</strong><br><span>Hace un día</span></li>
+        <li><strong>🧠 Consejos de reciclaje</strong><br><span>Hace un día</span></li>
+      </ul>
+    </aside>
+
+    <!-- PANEL CENTRAL -->
+    <section class="center-panel">
+      <div class="welcome-card">
+        <h2>Bienvenido <span>Zero Waste</span></h2>
+        <p>Gracias por ser parte de nuestra comunidad. Accede a campañas, herramientas y más.</p>
+        <a href="{{ url_for('ver_campañas') }}" class="btn-ver">📋 Ver campañas disponibles</a>
+        <a href="{{ url_for('nueva_campaña') }}" class="btn-crear">➕ Crear nueva campaña</a>
+      </div>
+
+      {% if campañas %}
+      <div class="campañas">
+        <h3>Campañas activas:</h3>
+        <ul>
+          {% for titulo, descripcion, fecha in campañas %}
+          <li>
+            <strong>{{ titulo }}</strong> ({{ fecha }})<br>
+            {{ descripcion }}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% else %}
+      <p class="sin-campañas">Aún no hay campañas registradas.</p>
+      {% endif %}
+    </section>
+
+    <!-- PANEL DERECHO -->
+    <div class="right-panel">
+      <h3>👥 Tus Campañas</h3>
+      {% if campañas_usuario %}
+          <ul class="campañas-usuario">
+              {% for campaña in campañas_usuario %}
+              <li>
+                  <a href="{{ url_for('ver_campaña', id=campaña.id) }}">
+                      📌 {{ campaña.titulo }}
+                  </a>
+              </li>
+              {% endfor %}
+          </ul>
+      {% else %}
+          <p class="sin-campañas">Aún no tienes campañas registradas.</p>
+      {% endif %}
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nueva Campaña | Zero Waste</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/nueva_campaña.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="form-wrapper">
+    <div class="form-container">
+      <img src="{{ url_for('static', filename='img/LogoPrincipal.jpeg') }}" alt="Logo Zero Waste" class="logo-campaña">
+
+      <h1>🌱 Crea una nueva campaña</h1>
+      <p class="subtexto">Comparte tu iniciativa ecológica con la comunidad</p>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <form method="POST">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo" placeholder="Ej. Reciclatón UPQ 2025" value="{{ titulo or '' }}">
+        {% if errores.titulo %}
+          <div class="error">{{ errores.titulo }}</div>
+        {% endif %}
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" placeholder="Describe en qué consiste tu campaña">{{ descripcion or '' }}</textarea>
+        {% if errores.descripcion %}
+          <div class="error">{{ errores.descripcion }}</div>
+        {% endif %}
+
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" name="fecha" value="{{ fecha or '' }}">
+        {% if errores.fecha %}
+          <div class="error">{{ errores.fecha }}</div>
+        {% endif %}
+
+        <button type="submit">🌍 Registrar campaña</button>
+      </form>
+
+      <a href="{{ url_for('dashboard') }}">← Volver al Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>

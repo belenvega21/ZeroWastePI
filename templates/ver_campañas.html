@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Campañas Disponibles | Zero Waste</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ver_campañas.css') }}">
+</head>
+<body>
+    <h1>Campañas Disponibles</h1>
+
+    <!-- Mensajes Flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li><strong>{{ category.title() }}:</strong> {{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% if campañas %}
+        <ul>
+            {% for campaña in campañas %}
+                <li>
+                    <h3>{{ campaña[1] }}</h3>
+                    <p>{{ campaña[2] }}</p>
+                    <p><strong>Fecha:</strong> {{ campaña[3] }}</p>
+
+                    <!-- Formulario para inscribirse -->
+                    <form action="{{ url_for('inscribirse_campana', campana_id=campaña[0]) }}" method="POST">
+                        <button type="submit">Inscribirme</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay campañas activas por el momento.</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('dashboard') }}">← Volver al Dashboard</a>
+</body>
+</html>
