@@ -151,7 +151,7 @@ def dashboard():
         flash(f'Error al cargar el dashboard: {str(e)}', 'danger')
         return redirect(url_for('login'))
 
-# RUTA DE REGISTRO DE CAMPAÑA 
+# RUTA DE REGISTRO DE CAMPAÑA (NUEVA)
 @app.route('/nueva_campaña', methods=['GET', 'POST'])
 def nueva_campaña():
     if 'usuario_id' not in session:
